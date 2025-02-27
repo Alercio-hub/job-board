@@ -2,14 +2,12 @@
 URL mappings for the user API.
 """
 from django.urls import path
-
-from . import views
-
+from .views import ListUsersView, CreateUserView, ManageUserView
 
 app_name = 'users_app'
 
 urlpatterns = [
-    path('create/', views.CreateUserView.as_view(), name='create'),
-    path('token/', views.CreateTokenView.as_view(), name='token'),
-    path('me/', views.ManageUserView.as_view(), name='me'),
+    path('', ListUsersView.as_view(), name='list'),
+    path('create/', CreateUserView.as_view(), name='create'),
+    path('me/', ManageUserView.as_view(), name='me'),
 ]
